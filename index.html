@@ -315,3 +315,184 @@
             display: inline-block;
             padding: 4px 8px;
             background: var(--accent-light);
+             <div id="dashboard" class="section active">
+            <h1>Добро пожаловать</h1>
+            <p class="subtitle" id="currentDateText">Сегодня отличный день для продуктивности.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>✅ Активные задачи</h3>
+                    <p id="dashTaskCount" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</p>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">В вашем планере</p>
+                </div>
+                <div class="card">
+                    <h3>📝 Заметок в блокноте</h3>
+                    <p id="dashNoteCount" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</p>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Сохранено локально</p>
+                </div>
+                <div class="card">
+                    <h3>📖 Записей в дневнике</h3>
+                    <p id="dashDiaryCount" style="font-size: 24px; font-weight: 700; color: var(--accent);">0</p>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Ваша история</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="planner" class="section">
+            <h1>Планер задач</h1>
+            <p class="subtitle">Управляйте ежедневными делами и приоритетами.</p>
+            <div class="card" style="max-width: 600px;">
+                <div class="input-group">
+                    <input type="text" id="taskInput" placeholder="Новая задача..." onkeypress="if(event.key==='Enter') addTask()">
+                    <button class="primary" onclick="addTask()">Добавить</button>
+                </div>
+                <ul class="task-list" id="taskList"></ul>
+            </div>
+        </div>
+
+        <div id="calendar" class="section">
+            <h1>Календарь</h1>
+            <p class="subtitle">Текущий месяц и ключевые даты.</p>
+            <div class="card" style="max-width: 700px;">
+                <div class="cal-header">
+                    <h3 id="calMonthYear">Месяц Год</h3>
+                </div>
+                <div class="cal-grid" id="calGrid"></div>
+            </div>
+        </div>
+
+        <div id="notes" class="section">
+            <h1>Блокнот</h1>
+            <p class="subtitle">Быстрые мысли, идеи и черновики.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Новая заметка</h3>
+                    <input type="text" id="noteTitle" placeholder="Заголовок" style="margin-bottom: 10px;">
+                    <textarea id="noteBody" rows="5" placeholder="Текст заметки..." style="margin-bottom: 12px;"></textarea>
+                    <button class="primary" onclick="addNote()">Сохранить заметку</button>
+                </div>
+                <div class="card">
+                    <h3>Мои заметки</h3>
+                    <div id="notesList"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="diary" class="section">
+            <h1>Личный дневник</h1>
+            <p class="subtitle">Записывайте события дня и отслеживайте настроение.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Запись за сегодня</h3>
+                    <select id="diaryMood" style="margin-bottom: 10px;">
+                        <option value="😊 Отличное">😊 Настроение: Отличное</option>
+                        <option value="😐 Спокойное">😐 Настроение: Спокойное</option>
+                        <option value="😔 Усталое">😔 Настроение: Усталое</option>
+                        <option value="🔥 Продуктивное">🔥 Настроение: Продуктивное</option>
+                    </select>
+                    <textarea id="diaryText" rows="5" placeholder="Как прошел ваш день?" style="margin-bottom: 12px;"></textarea>
+                    <button class="primary" onclick="addDiary()">Добавить в дневник</button>
+                </div>
+                <div class="card">
+                    <h3>Хронология</h3>
+                    <div id="diaryList"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="calc" class="section">
+            <h1>Калькулятор</h1>
+            <p class="subtitle">Быстрые вычисления под рукой.</p>
+            <div class="card calc-wrapper">
+                <input type="text" class="calc-display" id="calcDisplay" readonly>
+                <div class="calc-grid">
+                    <button class="calc-btn op" onclick="calcClear()">C</button>
+                    <button class="calc-btn op" onclick="calcAppend('/')">÷</button>
+                    <button class="calc-btn op" onclick="calcAppend('*')">×</button>
+                    <button class="calc-btn op" onclick="calcBack()">⌫</button>
+                    <button class="calc-btn" onclick="calcAppend('7')">7</button>
+                    <button class="calc-btn" onclick="calcAppend('8')">8</button>
+                    <button class="calc-btn" onclick="calcAppend('9')">9</button>
+                    <button class="calc-btn op" onclick="calcAppend('-')">−</button>
+                    <button class="calc-btn" onclick="calcAppend('4')">4</button>
+                    <button class="calc-btn" onclick="calcAppend('5')">5</button>
+                    <button class="calc-btn" onclick="calcAppend('6')">6</button>
+                    <button class="calc-btn op" onclick="calcAppend('+')">+</button>
+                    <button class="calc-btn" onclick="calcAppend('1')">1</button>
+                    <button class="calc-btn" onclick="calcAppend('2')">2</button>
+                    <button class="calc-btn" onclick="calcAppend('3')">3</button>
+                    <button class="calc-btn" onclick="calcAppend('.')">.</button>
+                    <button class="calc-btn" onclick="calcAppend('0')">0</button>
+                    <button class="calc-btn eq" onclick="calcEval()">=</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="news" class="section">
+            <h1>Новостная лента</h1>
+            <p class="subtitle">Демонстрационный макет ленты (готово к подключению RSS/API).</p>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="tag">Технологии</span>
+                    <h3>Развитие локальных веб-приложений</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Современные браузеры позволяют хранить гигабайты данных локально без сервера.</p>
+                </div>
+                <div class="card">
+                    <span class="tag">Дизайн</span>
+                    <h3>Почему минимализм остается в тренде</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Чистый интерфейс снижает когнитивную нагрузку и помогает фокусироваться на задачах.</p>
+                </div>
+                <div class="card">
+                    <span class="tag">Продуктивность</span>
+                    <h3>Метод единого рабочего пространства</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Объединение календаря, заметок и медиа в одном окне экономит до 40 минут в день.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="library" class="section">
+            <h1>Библиотека</h1>
+            <p class="subtitle">Ваш список книг и статей для чтения.</p>
+            <div class="card" style="max-width: 600px; margin-bottom: 20px;">
+                <div class="input-group" style="margin-bottom: 0;">
+                    <input type="text" id="bookInput" placeholder="Название книги и автор...">
+                    <button class="primary" onclick="addBook()">Добавить</button>
+                </div>
+            </div>
+            <div class="grid-3" id="bookList"></div>
+        </div>
+
+        <div id="video" class="section">
+            <h1>Видеотека</h1>
+            <p class="subtitle">Избранные видео, лекции и локальные файлы.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="media-thumb">🎬</div>
+                    <h3>Плейлист: Обучение и лекции</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin: 8px 0 14px;">Сюда можно встроить плеер YouTube или загрузку локальных MP4-файлов.</p>
+                    <button class="secondary" onclick="alert('Модуль видеоплеера готов к подключению ссылок или файлов!')">Открыть плеер</button>
+                </div>
+                <div class="card">
+                    <div class="media-thumb">🎞️</div>
+                    <h3>Документальное кино</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin: 8px 0 14px;">Сохраненные закладки фильмов на вечер.</p>
+                    <button class="secondary" onclick="alert('Модуль видеоплеера готов к подключению ссылок или файлов!')">Открыть список</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="audio" class="section">
+            <h1>Аудиотека</h1>
+            <p class="subtitle">Музыка для фокуса, подкасты и аудиокниги.</p>
+            <div class="card" style="max-width: 600px;">
+                <h3>🎧 Фокус-поток (Локальный аудиоплеер)</h3>
+                <p style="font-size: 14px; color: var(--text-secondary); margin: 8px 0 16px;">Загрузите любой аудиофайл с компьютера, чтобы прослушать его прямо здесь:</p>
+                <input type="file" accept="audio/*" onchange="loadAudio(event)" style="margin-bottom: 16px;">
+                <audio id="audioPlayer" controls style="width: 100%;"></audio>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        function toggleMobileMenu() {
