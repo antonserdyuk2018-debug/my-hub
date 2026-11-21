@@ -175,7 +175,18 @@
     </script>
 </head>
 <body>
+<div class="mobile-header">
+        <div style="font-weight: 700; font-size: 18px;">⚡ LifeHub</div>
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    </div>
+    <button class="desktop-open-btn" onclick="toggleSidebar()" title="Открыть меню">☰</button>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
+    <aside id="sidebar">
+        <div class="logo">
+            <span>⚡ LifeHub</span>
+            <button class="toggle-sidebar-btn" onclick="toggleSidebar()" title="Свернуть меню">◀</button>
+        </div>
     <div class="mobile-header">
         <div style="font-weight: 700; font-size: 18px;">⚡ LifeHub</div>
         <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
