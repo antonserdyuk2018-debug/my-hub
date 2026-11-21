@@ -94,6 +94,31 @@
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
             .cal-day { padding: 10px 4px; font-size: 13px; }
         }
+        .mobile-header { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: var(--bg-surface); border-bottom: 1px solid var(--border); padding: 0 16px; align-items: center; justify-content: space-between; z-index: 900; }
+        .menu-btn, .desktop-open-btn { background: var(--bg-surface); border: 1px solid var(--border); color: var(--text-primary); font-size: 18px; padding: 6px 12px; border-radius: 8px; cursor: pointer; box-shadow: var(--shadow); }
+        .desktop-open-btn { display: none; position: fixed; top: 16px; left: 16px; z-index: 850; }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 950; }
+        .sidebar-overlay.open { display: block; }
+        
+        aside { width: 250px; transition: margin-left 0.25s ease, transform 0.25s ease; z-index: 1000; flex-shrink: 0; }
+        .logo { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-sidebar-btn { background: var(--bg-main); border: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); cursor: pointer; padding: 4px 8px; border-radius: 6px; }
+        .toggle-sidebar-btn:hover { color: var(--text-primary); border-color: var(--accent); }
+
+        @media (min-width: 769px) {
+            body.sidebar-collapsed aside { margin-left: -250px; }
+            body.sidebar-collapsed .desktop-open-btn { display: block; }
+            body.sidebar-collapsed main { padding-left: 68px; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .desktop-open-btn { display: none !important; }
+            aside { position: fixed; top: 0; bottom: 0; left: 0; margin-left: 0 !important; transform: translateX(-100%); box-shadow: 4px 0 16px rgba(0,0,0,0.1); }
+            aside.open { transform: translateX(0); }
+            main { padding: 76px 16px 24px; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        }
     </style>
     <script>
         (function() {
