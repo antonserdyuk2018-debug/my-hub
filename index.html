@@ -406,18 +406,7 @@
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        function switchTab(tabId, el) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            el.classList.add('active');
-            updateDashboard();
-            if (window.innerWidth <= 768) {
-                document.getElementById('sidebar').classList.remove('open');
-                document.getElementById('sidebarOverlay').classList.remove('open');
-            }
-        }
-
+        
         let tasks = JSON.parse(localStorage.getItem('lh_tasks')) || [{text: 'Изучить новый интерфейс LifeHub', done: false}];
         let notes = JSON.parse(localStorage.getItem('lh_notes')) || [{title: 'Первая идея', body: 'Здесь можно хранить любые быстрые заметки.'}];
         let diary = JSON.parse(localStorage.getItem('lh_diary')) || [];
